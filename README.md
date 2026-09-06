@@ -63,6 +63,17 @@ npm run dev                     # http://localhost:5173  (proxies /api → :8000
 docker compose up --build       # postgres :5433, api :8000, web :80
 ```
 
+### GitHub Pages + API deployment
+
+GitHub Pages hosts only the static frontend. The FastAPI backend must be
+deployed separately (the included `api/index.py` supports Vercel), then set
+the repository Actions variable `VITE_API_BASE_URL` to the backend URL plus
+`/api`, for example `https://your-backend.vercel.app/api`. Also include
+`https://mydnight-syntax.github.io` in the backend's `CORS_ORIGINS`.
+
+The Pages workflow runs automatically on pushes to `main`. In GitHub, enable
+**Settings → Pages → Source: GitHub Actions**.
+
 ## 🔑 Demo accounts (password `Demo@1234`)
 
 | Role | Email |
