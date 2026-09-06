@@ -1,5 +1,5 @@
 const TOKEN_KEY = 'pashusafe_token';
-export const API_BASE_URL = '/api';
+export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '');
 
 export class ApiError extends Error {
   status: number;
@@ -42,7 +42,7 @@ export async function api<T = any>(path: string, options: RequestInit = {}): Pro
 
   if (res.status === 401 && !path.startsWith('/auth/login')) {
     setToken(null);
-    window.location.href = '/login';
+    window.location.href = `${import.meta.env.BASE_URL}login`;
     throw new ApiError(401, { detail: 'Session expired' });
   }
 
