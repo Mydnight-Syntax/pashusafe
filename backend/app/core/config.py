@@ -19,6 +19,7 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5173",
         "http://localhost:5174",
         "http://127.0.0.1:5174",
+        "https://mydnight-syntax.github.io",
     ]
     anthropic_api_key: str | None = None
     anthropic_model: str = "claude-sonnet-4-5"
